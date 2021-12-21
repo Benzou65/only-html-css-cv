@@ -1,0 +1,367 @@
+:root{
+	--height-img-phone: 95vh;
+	--ratio-img-phone: 0.762;
+	--ratio-height-screen-img-phone: 0.605;
+	--ratio-width-screen-img-phone: 0.445;
+}
+@font-face{
+	font-family: "Alarm clock";
+	src: url("alarmclock.ttf") format("truetype");
+}
+html{
+	overflow:hidden; /* Enlève les barres de scroll et bloque la page */ 
+}
+body{
+	width: 100vw;
+	height: 100vh;
+	background-color: grey;
+	padding: 0;
+	margin: 0;
+}
+a, a:visited{
+	text-decoration: none;
+}
+a:hover{
+	cursor: pointer;
+}
+p{
+	font-family: arial, sans-serif;
+}
+#hand{
+	position: fixed;
+	bottom: 0vh;
+	right: calc((50vw - (var(--height-img-phone) * var(--ratio-img-phone) * 0.65)));
+	height: var(--height-img-phone);
+	width: calc(var(--height-img-phone) * var(--ratio-img-phone));
+	background-image: url("lamainlow.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	z-index: 10;
+	background-position: right bottom;
+/* 	transition: background-image 2s ease-in 1s; */
+	pointer-events: none;
+}
+#backgroundVideo{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+}
+#backgroundImg{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	min-width: 100%;
+	min-height: 100%;
+	filter: blur(3px);
+	transition: filter 0.2s ease-in;
+}
+#backgroundImg:hover{
+	filter: blur(0px);
+}
+#appsHome{
+	position: fixed;
+	bottom: 30.5vh;
+	right: calc(50vw - (var(--height-img-phone) * var(--ratio-img-phone) * 0.65) + 0.427 * calc(var(--height-img-phone) * var(--ratio-img-phone)));
+	height: calc(var(--height-img-phone) * var(--ratio-height-screen-img-phone));
+	width: calc(var(--height-img-phone) * var(--ratio-img-phone) * var(--ratio-width-screen-img-phone));
+	z-index: 2;
+	color: white;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: start;
+	/* justify-content: center; */
+	perspective: 1200px;
+	background-image: url("wallpaperphone.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#indexApps{
+	position: fixed;
+	bottom: 30.5vh;
+	right: calc(50vw - (var(--height-img-phone) * var(--ratio-img-phone) * 0.65) + 0.427 * calc(var(--height-img-phone) * var(--ratio-img-phone)));
+	height: calc(var(--height-img-phone) * var(--ratio-height-screen-img-phone));
+	width: calc(var(--height-img-phone) * var(--ratio-img-phone) * var(--ratio-width-screen-img-phone));
+	z-index: 0;
+	color: white;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: start;
+	/* justify-content: center; */
+	perspective: 1200px;
+	background-image: url("wallpaperphone.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#appsHome img, #indexApps img{
+	width: 6vh;
+	height: auto;
+	border-radius: 1.25vh;
+	box-shadow: 0vh 0vh 2vh;
+	color: black;
+}
+/* Marge sur les apps et anim ---------------------- */
+.appsMargin{
+	margin: 1vh;
+	top: 0px;
+	transition: 0.5s;
+}
+.appsMargin:hover{
+	position: relative;
+	top: 3px;
+	transform: rotateZ(-5deg);
+}
+/* ----------------------------------------------------- */
+.apps{
+	background-color: white;
+	z-index: 0;
+	position: fixed;
+	bottom: 30.5vh;
+	right: calc(50vw - (var(--height-img-phone) * var(--ratio-img-phone) * 0.65) + 0.427 * calc(var(--height-img-phone) * var(--ratio-img-phone)));
+	height: calc(var(--height-img-phone) * var(--ratio-height-screen-img-phone));
+	width: calc(var(--height-img-phone) * var(--ratio-img-phone) * var(--ratio-width-screen-img-phone));
+	overflow-y: scroll;
+}
+#facebookApp:target, #instagramApp:target, #tinderApp:target, #linkedinApp:target, #gmailApp:target, #gmapsApp:target, #twitterApp:target, #whatsApp:target, #ninegagApp:target, #indexApps:target{
+	z-index: 8;
+}
+.apps img, #bottomMenu img{
+	width: 100%;
+}
+img.noimg{
+	height: 100%;
+	width: auto;
+}
+#twitterApp, #tinderApp, #gmapsApp, #whatsApp, #gmailApp, #ninegagApp{
+	overflow: hidden;
+}
+#bottomMenu{
+	z-index: 8;
+	color: white;
+	background-color: rgba(0,0,0,0.5);
+	position: fixed;
+	bottom: 30.5vh;
+	right: calc(50vw - (var(--height-img-phone) * var(--ratio-img-phone) * 0.65) + 0.427 * calc(var(--height-img-phone) * var(--ratio-img-phone)));
+	height: 3vh;
+	width: calc(var(--height-img-phone) * var(--ratio-img-phone) * var(--ratio-width-screen-img-phone));
+}
+/* HORLOGE --------------------------------------------- */
+#clock{
+	position: relative;
+	margin: 5vh 4vh 2vh 4vh;
+	width: 100%;
+	display: block;
+	background-color: rgba(255,255,255,0.2);
+	border-radius: 1vh;
+	box-shadow: 0vh 0vh 2vh;
+	color: black;
+	transition: 0.5s;
+	height: 8.5vh;
+	overflow: hidden;
+	text-align: center;
+}
+
+#clock:hover{
+	height: 12vh; 
+}
+#date_heure em{
+	text-decoration: none;
+	font-style: normal;
+	margin: 0;
+	padding: 0;
+	color: white;
+	font-size: 8vh;
+	text-shadow: 0.3vh 0.3vh 0vh rgba(0,0,0,0.3);
+	font-family: "Alarm clock", arial, sans-serif;
+}
+#date_heure p{
+	margin: 0;
+	color: white;
+	font-size: 1.5vh;
+	text-align: right;
+	text-shadow: 0.15vh 0.15vh 0vh rgba(0,0,0,0.3);
+	padding-right: 1vw; 
+}
+/* ----------------------------------------------------- */
+
+
+.phonenumber{
+	position: absolute;
+	top: 10vh;
+	color: white;
+	font-size: 4vh;
+	text-align: center;
+	width: 100%;
+}
+
+img.typingcursor {
+	position: relative;
+	top: -37vh;
+	left: 1vh;
+	height: 2vh;
+	width: auto;
+}
+
+#stickynote{
+	width: 15vh;
+	height: 15vh;
+	background-color: #ffc;
+	color: black;
+	transform: rotateZ(-10deg);
+	margin-top: 1vh;
+	margin-left: 1vh;
+	padding: 1vh;
+	font-family:"Reenie Beanie",arial,sans-serif;
+	box-shadow: 1vh 1vh 2vh rgba(33,33,33,.7);
+	transition: 0.15s ease-in;
+}
+#stickynote:hover{
+	box-shadow: 2vh 2vh 2vh rgba(0,0,0,.7);
+	transform: scale(1.5);
+}
+#stickynote h1{
+	font-family:"Reenie Beanie",arial,sans-serif;
+	font-size: 2.5vh;
+	margin: 0;
+}
+#stickynote p{
+	font-family:"Reenie Beanie",arial,sans-serif;
+	font-size:3vh;
+	margin: 0;
+}
+
+.chapters{
+	width: 70%;
+	text-align: center;
+	background-color: rgba(255,255,255,0.2);
+	border-radius: 1vh;
+	box-shadow: 0vh 0vh 2vh;
+	color: black;
+	transition: 0.5s;
+	margin-top: 1vh;
+	margin-bottom: 1vh;
+	margin-left: 15%;
+	margin-right: 15%;
+}
+.chapters h2{
+	color: white;
+	font-family: arial, sans-serif;
+	font-size: 2.5vh;
+	padding: 0;
+	margin: 1vh;
+	text-shadow: 0.3vh 0.3vh 0vh rgba(0,0,0,0.3);
+}
+
+#stickyCV{
+	width: 50vh;
+	height: 3vh;
+	position: fixed;
+	bottom: 0;
+	background-color: #ffc;
+	z-index: 1000;
+	text-align: center;
+	margin-left: calc((100% - 50vh) / 2);
+	transition: 0.2s ease-in;
+	border-top-right-radius: 1.5vh;
+	border-top-left-radius: 1.5vh;
+}
+#stickyCV:hover{
+	height: 5vh;
+}
+#stickyCV a,#stickyCV a:visited{
+	font-family:"Reenie Beanie",arial,sans-serif;
+	font-size: 5vh;
+	color: black;
+}
+#stickyCV p{
+	margin: 0;
+}
+
+
+/* ---------------- MEDIA QUERIES ----------------- */
+@media screen and (max-width: 500px) {
+	#appsHome, #indexApps, .apps{
+		bottom: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+	}
+	#bottomMenu{
+		width: 100vw;
+		bottom: 0;
+		right: 0;
+		height: auto;
+	}
+	#hand{
+		display: none;
+	}
+	.appsMargin{
+	margin: 2.5vw;
+	}
+	#appsHome img, #indexApps img{
+	width: 20vw;
+	border-radius: 5vw;
+	box-shadow: 0vw 0vw 2vw;
+	}
+	#clock{
+	margin: 10vw 8vw 4vw 8vw;
+	border-radius: 4vw;
+	box-shadow: 0vw 0vw 4vw;
+	height: 25vw;
+	}
+	#clock:hover{
+		height: 35vw; 
+	}
+	#date_heure em{
+	font-size: 25vw;
+	text-shadow: 0.6vw 0.6vw 0vw rgba(0,0,0,0.3);
+	}
+	#date_heure p{
+		font-size: 5vw;
+		text-shadow: 0.3vw 0.3vw 0vw rgba(0,0,0,0.3);
+		padding-right: 4vw; 
+	}
+	#stickynote{
+	width: 30vw;
+	height: 30vw;
+	margin-top: 2vw;
+	margin-left: 2vw;
+	padding: 2vw;
+	box-shadow: 2vw 2vw 4vw rgba(33,33,33,.7);
+	}
+	#stickynote:hover{
+		box-shadow: 4vw 4vw 4vw rgba(0,0,0,.7);
+	}
+	#stickynote h1{
+		font-size: 5vw;
+	}
+	#stickynote p{
+		font-size:6vw;
+	}
+
+	.chapters{
+		border-radius: 2vw;
+		box-shadow: 0vw 0vw 4vw;
+		margin-top: 2vw;
+		margin-bottom: 2vw;
+	}
+	.chapters h2{
+		font-size: 6vw;
+		margin: 2vw;
+		text-shadow: 0.6vw 0.6vw 0vw rgba(0,0,0,0.3);
+	}
+	.phonenumber{
+	top: 30vw;
+	font-size: 10vw;
+	}
+	img.typingcursor {
+		position: absolute;
+		top: 66vw;
+		left: 4vw;
+		height: 4vw;
+	}
+	#stickyCV{
+		display: none;
+	}
+}
