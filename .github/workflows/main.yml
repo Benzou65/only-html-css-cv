@@ -29,7 +29,7 @@ jobs:
           # will put all file under this path
           local_path: ./* # default is ./*
           # files will copy to under remote_path
-          remote_path: /cv-from-github/
+          remote_path: ${{ secrets.REMOTE_PATH }}
 
           # sftp args
           args: "-o ConnectTimeout=5"
